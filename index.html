@@ -1,0 +1,216 @@
+<!-- <!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yatırım Hesaplayıcı</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      #calculator {
+        background-color: #f7f7f7;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+      #result {
+        margin-top: 20px;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ÇıtıPıtının Eysın'a Hediyesi</h1>
+    <h2>Octobit Yatırım Kar Hesaplayıcı</h2>
+    <div id="calculator">
+      <label for="initialInvestment">İlk Yatırım (USD):</label>
+      <input
+        type="number"
+        id="initialInvestment"
+        min="0"
+        step="0.01"
+        required
+      />
+      <button onclick="calculateInvestment()">Hesapla</button>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function calculateInvestment() {
+        const initialInvestment = parseFloat(
+          document.getElementById("initialInvestment").value
+        );
+        const dailyReturnRate = 0.01; // Günlük %1 getiri
+        const daysInMonth = 30; // Ortalama bir ay 30 gün olarak hesaplanır
+
+        if (isNaN(initialInvestment) || initialInvestment <= 0) {
+          alert("Lütfen geçerli bir pozitif başlangıç yatırımı girin.");
+          return;
+        }
+
+        let result = `İlk Yatırım: $${initialInvestment.toFixed(2)}\n\n`;
+
+        let currentValue = initialInvestment;
+        for (let month = 1; month <= 12; month++) {
+          const totalDays = month * daysInMonth;
+          const monthlyValue =
+            initialInvestment * Math.pow(1 + dailyReturnRate, totalDays);
+          const monthlyProfit = monthlyValue - currentValue;
+          const totalProfit = monthlyValue - initialInvestment;
+          const monthlyProfitPercentage = (monthlyProfit / currentValue) * 100;
+
+          result += `${month}. Ay:\n  Toplam Değer: $${monthlyValue.toFixed(
+            2
+          )}\n  Net Kar: $${monthlyProfit.toFixed(
+            2
+          )}\n  Aylık Kar Oranı: ${monthlyProfitPercentage.toFixed(
+            2
+          )}%\n  Toplam Kar: $${totalProfit.toFixed(2)}\n\n`;
+
+          currentValue = monthlyValue; // Sonraki ay için değeri güncelle
+        }
+
+        document.getElementById("result").textContent = result;
+      }
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      #calculator {
+        background-color: #f7f7f7;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+      #result {
+        margin-top: 20px;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Octobit Investment Profit Calculator</h2>
+    <div id="calculator">
+      <label for="initialInvestment">Initial Investment (USD):</label>
+      <input
+        type="number"
+        id="initialInvestment"
+        min="0"
+        step="0.01"
+        required
+      />
+      <button onclick="calculateInvestment()">Calculate</button>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function calculateInvestment() {
+        const initialInvestment = parseFloat(
+          document.getElementById("initialInvestment").value
+        );
+        const dailyReturnRate = 0.01; // 1% daily return
+        const daysInMonth = 30; // Average month assumed as 30 days
+
+        if (isNaN(initialInvestment) || initialInvestment <= 0) {
+          alert("Please enter a valid positive initial investment.");
+          return;
+        }
+
+        let result = `Initial Investment: $${initialInvestment.toFixed(2)}\n\n`;
+
+        let currentValue = initialInvestment;
+        for (let month = 1; month <= 12; month++) {
+          const totalDays = month * daysInMonth;
+          const monthlyValue =
+            initialInvestment * Math.pow(1 + dailyReturnRate, totalDays);
+          const monthlyProfit = monthlyValue - currentValue;
+          const totalProfit = monthlyValue - initialInvestment;
+          const monthlyProfitPercentage = (monthlyProfit / currentValue) * 100;
+
+          result += `${month} Month:\n  Total Value: $${monthlyValue.toFixed(
+            2
+          )}\n  Net Profit: $${monthlyProfit.toFixed(
+            2
+          )}\n  Monthly Profit Percentage: ${monthlyProfitPercentage.toFixed(
+            2
+          )}%\n  Total Profit: $${totalProfit.toFixed(2)}\n\n`;
+
+          currentValue = monthlyValue; // Update value for the next month
+        }
+
+        document.getElementById("result").textContent = result;
+      }
+    </script>
+  </body>
+</html>
